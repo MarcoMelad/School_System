@@ -1,0 +1,19 @@
+<?php
+
+return [
+    'title_page' => 'Page title',
+    'List_Grade' => 'List Grade',
+    'add_Grade' => 'add Grade',
+    'edit_Grade' => 'edit Grade',
+    'delete_Grade' => 'delete Grade',
+    'Warning_Grade' => 'Sure! You Want To Delete This Grade ?',
+    'stage_name_ar' => 'Arabic Grade Name',
+    'stage_name_en' => 'English Grade Name',
+    'Notes' => 'Notes',
+    'Submit' => 'Submit',
+    'Name' => 'Name',
+    'Processes' => 'Processes',
+    'Edit' => 'Edit',
+    'Delete' => 'Delete',
+    'Close' => 'Close',
+];
