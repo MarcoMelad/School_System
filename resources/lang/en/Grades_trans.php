@@ -14,6 +14,7 @@ return [
     'Name' => 'Name',
     'Processes' => 'Processes',
     'Edit' => 'Edit',
+    'exists' => 'The Field Already Exists',
     'Delete' => 'Delete',
     'Close' => 'Close',
 ];
