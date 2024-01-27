@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Grades;
 
 use App\Http\Requests\StoreGrades;
+use App\Models\Classroom;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+
 class GradeController extends Controller
 {
 
@@ -51,8 +54,8 @@ class GradeController extends Controller
       ];
       $Grade->Notes = $request->Notes;
       $Grade->save();
-      toastr()->success(trans('message.success'));
 
+      toastr()->success(trans('message.Success'));
       return redirect()->route('Grades.index');
 
       } catch (\Exception $e){
@@ -125,6 +128,7 @@ class GradeController extends Controller
           toastr()->success(trans('message.Delete'));
 
           return redirect()->route('Grades.index');
+
 
   }
 

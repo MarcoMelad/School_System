@@ -37,9 +37,12 @@ Route::group(
         Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
         Route::group(['namespace'=>'Grades'],function (){
-
-        Route::resource('Grades','GradeController');
+            Route::resource('Grades','GradeController');
         });
+
+        Route::group(['namespace' => 'Classrooms'], function () {
+             Route::resource('Classrooms', 'ClassroomController');
+    });
 });
 
 
