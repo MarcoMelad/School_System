@@ -7,6 +7,7 @@ return [
     'edit_Grade' => 'edit Grade',
     'delete_Grade' => 'delete Grade',
     'Warning_Grade' => 'Sure! You Want To Delete This Grade ?',
+    'delete_Grade_Error'=>'The Grade cannot be deleted because there are classes attached to it',
     'stage_name_ar' => 'Arabic Grade Name',
     'stage_name_en' => 'English Grade Name',
     'Notes' => 'Notes',

@@ -22,5 +22,7 @@ return [
     'Settings'=>'الاعدادات',
     'Users'=>'المستخدمين',
     'Copyright' => 'جميع الحقوق محفوظة ',
-    'Name_Programer' => 'Marco Milad'
+    'Name_Programer' => 'Marco Milad',
+    'sections'=>'الاقسام',
+    'List_sections'=>'قائمة الاقسام الدراسية',
 ];

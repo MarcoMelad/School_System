@@ -20,4 +20,7 @@ return [
     'Edit'=>'تعديل',
     'Delete'=>'حذف',
     'Close' => 'اغلاق',
+    'delete_checkbox'=> 'حذف الصفوف المختارة',
+    'Search_By_Grade'=> 'بحث باسم المرحلة',
+
 ];

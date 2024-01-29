@@ -18,7 +18,8 @@ return [
     'Edit'=>'Edit',
     'Delete'=>'Delete',
     'Close' => 'Close',
-
+    'delete_checkbox'=> 'Delete Selected',
+    'Search_By_Grade'=> 'Search By Grade Name',
 
 
 ];

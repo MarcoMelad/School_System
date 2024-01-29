@@ -126,10 +126,17 @@ class GradeController extends Controller
   public function destroy(Request $request)
   {
 
-          $Grade = Grade::findOrFail($request->id)->delete();
-          toastr()->success(trans('messages.Delete'));
+      $MyClass_id = Classroom::where('Grade_id',$request->id)->pluck('Grade_id');
 
+      if ($MyClass_id->count() == 0){
+          $MyClass = Grade::findOrFail($request->id)->delete();
+
+          toastr()->success(trans('messages.Delete'));
           return redirect()->route('Grades.index');
+      } else {
+          toastr()->error(trans('Grades_trans.delete_Grade_Error'));
+          return redirect()->route('Grades.index');
+      }
 
 
   }

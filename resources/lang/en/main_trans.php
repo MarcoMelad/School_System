@@ -22,7 +22,8 @@ return [
     'Onlineclasses'=>'Online classes',
     'Settings'=>'Settings',
     'Users'=>'Users',
-
+    'sections'=>'Sections',
+    'List_sections'=>'List Sections',
 
     'Copyright' => 'Copyright',
     'Name_Programer' => 'Marco Milad All Rights Reserved'
