@@ -23,6 +23,15 @@ class CreateForeignKeys extends Migration {
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
+
+        Schema::table('my__parents', function(Blueprint $table) {
+            $table->foreign('Nationality_Father_id')->references('id')->on('nationalities');
+            $table->foreign('Blood_Type_Father_id')->references('id')->on('type__bloods');
+            $table->foreign('Religion_Father_id')->references('id')->on('religions');
+            $table->foreign('Nationality_Mother_id')->references('id')->on('nationalities');
+            $table->foreign('Blood_Type_Mother_id')->references('id')->on('type__bloods');
+            $table->foreign('Religion_Mother_id')->references('id')->on('religions');
+        });
 	}
 
 	public function down()
@@ -33,8 +42,9 @@ class CreateForeignKeys extends Migration {
         Schema::table('Sections', function(Blueprint $table) {
 			$table->dropForeign('Sections_Grade_id_foreign');
 		});
-        Schema::table('Sections', function(Blueprint $table) {
-			$table->dropForeign('Sections_Class_id_foreign');
-		});
+
+//        Schema::table('Sections', function(Blueprint $table) {
+//			$table->dropForeign('Sections_Class_id_foreign');
+//		});
 	}
 }
