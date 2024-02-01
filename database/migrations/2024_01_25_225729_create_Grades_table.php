@@ -9,9 +9,9 @@ class CreateGradesTable extends Migration {
 	{
 		Schema::create('Grades', function(Blueprint $table) {
 			$table->id();
-			$table->timestamps();
 			$table->string('Name')->unique();
 			$table->string('Notes')->nullable();
+			$table->timestamps();
 		});
 	}
 

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreSections;
 use App\Models\Classroom;
 use App\Models\Grade;
 use App\Models\Section;
+use App\Models\Teacher;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,9 @@ class SectionController extends Controller
     {
         $Grades = Grade::with(['Sections'])->get();
         $list_Grades = Grade::all();
+        $teachers = Teacher::all();
 
-        return view('pages.Sections.Sections',compact('Grades','list_Grades'));
+        return view('pages.Sections.Sections',compact('Grades','list_Grades','teachers'));
 
     }
 

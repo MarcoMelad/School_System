@@ -183,7 +183,7 @@
                                                       method="post">
                                                     {{ method_field('Delete') }}
                                                     @csrf
-                                                    {{ trans('My_Classes_trans.Warning_Grade') }}
+                                                    {{ trans('My_Classes_trans.Warning_class') }}
                                                     <input id="id" type="hidden" name="id" class="form-control"
                                                            value="{{ $My_Class->id }}">
                                                     <div class="modal-footer">

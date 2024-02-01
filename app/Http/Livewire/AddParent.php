@@ -4,16 +4,19 @@ namespace App\Http\Livewire;
 
 use App\Models\my_Parent;
 use App\Models\Nationalitie;
+use App\Models\ParentAttachment;
 use App\Models\Religion;
 use App\Models\Type_Blood;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddParent extends Component
 {
-    public $successMessage = '';
+    use withFileUploads;
+    public $successMessage = '', $updateMode= false;
 
-    public $catchError;
+    public $catchError,$photos,$show_table= true,$Parent_id;
 
     public $currentStep = 1,
 
@@ -53,8 +56,14 @@ class AddParent extends Component
             'Nationalities' => Nationalitie::all(),
             'Type_Bloods' => Type_Blood::all(),
             'Religions' => Religion::all(),
+            'my_parents' => my_Parent::all(),
         ]);
 
+    }
+
+    public function showformadd()
+    {
+        $this->show_table = false;
     }
 
     //firstStepSubmit
@@ -131,6 +140,17 @@ class AddParent extends Component
             $My_Parent->Address_Mother = $this->Address_Mother;
 
             $My_Parent->save();
+
+            if (!empty($this->photos)){
+
+                foreach ($this->photos as $photo){
+                    $photo->storeAs($this->National_ID_Father,$photo->getClientOriginalName(),$disk='parent_attachments');
+                    ParentAttachment::create([
+                        'file_name'=> $photo->getClientOriginalName(),
+                        'parent_id'=> my_Parent::latest()->first()->id,
+                    ]);
+                }
+            }
             $this->successMessage = trans('messages.Success');
             $this->clearForm();
             $this->currentStep = 1;
@@ -143,8 +163,93 @@ class AddParent extends Component
 
 
     }
+    //firstStepSubmit
+    public function edit($id)
+    {
+        $this->show_table = false;
+        $this->updateMode = true;
+        $My_Parent = My_Parent::where('id',$id)->first();
+        $this->Parent_id = $id;
+        $this->Email = $My_Parent->Email;
+        $this->Password = $My_Parent->Password;
+        $this->Name_Father = $My_Parent->getTranslation('Name_Father', 'ar');
+        $this->Name_Father_en = $My_Parent->getTranslation('Name_Father', 'en');
+        $this->Job_Father = $My_Parent->getTranslation('Job_Father', 'ar');
+        $this->Job_Father_en = $My_Parent->getTranslation('Job_Father', 'en');
+        $this->National_ID_Father =$My_Parent->National_ID_Father;
+        $this->Passport_ID_Father = $My_Parent->Passport_ID_Father;
+        $this->Phone_Father = $My_Parent->Phone_Father;
+        $this->Nationality_Father_id = $My_Parent->Nationality_Father_id;
+        $this->Blood_Type_Father_id = $My_Parent->Blood_Type_Father_id;
+        $this->Address_Father =$My_Parent->Address_Father;
+        $this->Religion_Father_id =$My_Parent->Religion_Father_id;
+
+        $this->Name_Mother = $My_Parent->getTranslation('Name_Mother', 'ar');
+        $this->Name_Mother_en = $My_Parent->getTranslation('Name_Father', 'en');
+        $this->Job_Mother = $My_Parent->getTranslation('Job_Mother', 'ar');;
+        $this->Job_Mother_en = $My_Parent->getTranslation('Job_Mother', 'en');
+        $this->National_ID_Mother =$My_Parent->National_ID_Mother;
+        $this->Passport_ID_Mother = $My_Parent->Passport_ID_Mother;
+        $this->Phone_Mother = $My_Parent->Phone_Mother;
+        $this->Nationality_Mother_id = $My_Parent->Nationality_Mother_id;
+        $this->Blood_Type_Mother_id = $My_Parent->Blood_Type_Mother_id;
+        $this->Address_Mother =$My_Parent->Address_Mother;
+        $this->Religion_Mother_id =$My_Parent->Religion_Mother_id;
+    }
 
 
+    public function firstStepSubmit_edit()
+    {
+        $this->updateMode = true;
+        $this->currentStep = 2;
+
+    }
+
+    //secondStepSubmit_edit
+    public function secondStepSubmit_edit()
+    {
+        $this->updateMode = true;
+        $this->currentStep = 3;
+
+    }
+
+    public function submitForm_edit(){
+
+        if ($this->Parent_id){
+            $parent = my_Parent::find($this->Parent_id);
+            $parent->update([
+                'Passport_ID_Father' => $this->Passport_ID_Father,
+                'National_ID_Father' => $this->National_ID_Father,
+                'Email' => $this->Email,
+                'Password' => $this->Password,
+                'Phone_Father' => $this->Phone_Father,
+                'Nationality_Father_id' => $this->Nationality_Father_id,
+                'Blood_Type_Father_id' => $this->Blood_Type_Father_id,
+                'Address_Father' => $this->Address_Father,
+                'Religion_Father_id' => $this->Religion_Father_id,
+
+                'National_ID_Mother' =>$this->National_ID_Mother,
+                'Passport_ID_Mother' => $this->Passport_ID_Mother,
+                'Phone_Mother' => $this->Phone_Mother,
+                'Nationality_Mother_id' => $this->Nationality_Mother_id,
+                'Blood_Type_Mother_id' => $this->Blood_Type_Mother_id,
+                'Address_Mother' =>$this->Address_Mother,
+                'Religion_Mother_id' =>$this->Religion_Mother_id,
+//                'Name_Mother' => $this->getTranslation('Name_Mother', 'ar'),
+//                'Name_Mother_en' => $this->getTranslation('Name_Father', 'en'),
+//                'Job_Mother' => $this->getTranslation('Job_Mother', 'ar'),
+//               'Job_Mother_en' => $this->getTranslation('Job_Mother', 'en'),
+//                'Name_Father' => $this->getTranslation('Name_Father', 'ar'),
+//                'Name_Father_en' => $this->getTranslation('Name_Father', 'en'),
+//                'Job_Father' => $this->getTranslation('Job_Father', 'ar'),
+//                'Job_Father_en' => $this->getTranslation('Job_Father', 'en'),
+
+            ]);
+
+        }
+
+        return redirect()->to('/add_parent');
+    }
     //clearForm
     public function clearForm()
     {
@@ -177,10 +282,16 @@ class AddParent extends Component
     }
 
 
+    public function delete($id)
+    {
+        my_Parent::findOrFail($id)->delete();
+    }
+
     //back
     public function back($step)
     {
         $this->currentStep = $step;
+        return redirect()->to('/add_parent');
     }
 
 }
