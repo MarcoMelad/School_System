@@ -14,13 +14,13 @@ class Teacher extends Model
     // علاقة بين المعلمين والتخصصات لجلب اسم التخصص
     public function specializations()
     {
-        return $this->belongsTo('App\Models\Specialization', 'Specialization_id');
+        return $this->belongsTo(Specialization::class, 'Specialization_id');
     }
 
     // علاقة بين المعلمين والانواع لجلب جنس المعلم
     public function genders()
     {
-        return $this->belongsTo('App\Models\Gender', 'Gender_id');
+        return $this->belongsTo(Gender::class, 'Gender_id');
     }
 
 // علاقة المعلمين مع الاقسام

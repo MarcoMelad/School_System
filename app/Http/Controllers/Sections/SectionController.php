@@ -24,7 +24,6 @@ class SectionController extends Controller
         $Grades = Grade::with(['Sections'])->get();
         $list_Grades = Grade::all();
         $teachers = Teacher::all();
-
         return view('pages.Sections.Sections',compact('Grades','list_Grades','teachers'));
 
     }
@@ -58,6 +57,7 @@ class SectionController extends Controller
             $Section->Class_id = $request->Class_id;
             $Section->Status = 1;
             $Section->save();
+            $Section->teachers()->attach($request->teacher_id);
 
             toastr()->success(trans('messages.Success'));
             return redirect()->route('Sections.index');
@@ -109,6 +109,11 @@ class SectionController extends Controller
                 $Section->Status = 1 ;
             }else {
                 $Section->Status = 2;
+            }
+            if (isset($request->teacher_id)) {
+                $Section->teachers()->sync($request->teacher_id);
+            } else {
+                $Section->teachers()->sync(array());
             }
             $Section->save();
 

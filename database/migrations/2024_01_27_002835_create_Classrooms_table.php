@@ -18,5 +18,10 @@ class CreateClassroomsTable extends Migration {
 	public function down()
 	{
 		Schema::drop('Classrooms');
-	}
+//        Schema::table('Classrooms', function (Blueprint $table) {
+//            $table->dropForeign('Classrooms_Grade_id_foreign');
+//            $table->dropColumn('user_id');
+//        });
+
+    }
 }
