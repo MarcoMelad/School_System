@@ -13,6 +13,8 @@ return [
     'List_classes'=>'Classes List',
     'sections'=>'Sections',
     'students'=>'Students',
+    'add_student'=>'Add New Student',
+    'list_student'=>'Students List',
     'Teachers'=>'Teachers',
     'List_Teachers' => 'List Teachers',
     'Parents'=>'Parents',

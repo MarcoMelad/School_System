@@ -32,7 +32,7 @@ class TeacherRepository implements TeacherRepositoryInterface{
             $Teachers->Joining_Date = $request->Joining_Date;
             $Teachers->Address = $request->Address;
             $Teachers->save();
-            toastr()->success(trans('messages.success'));
+            toastr()->success(trans('messages.Success'));
             return redirect()->route('Teachers.create');
         }
         catch (Exception $e) {
