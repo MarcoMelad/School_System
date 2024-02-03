@@ -43,4 +43,13 @@ class Student extends Model
     {
         return $this->morphMany(Image::class,'imageable');
     }
+    public function Nationality()
+    {
+        return $this->belongsTo(Nationalitie::class,'nationalitie_id');
+    }
+    public function myparent()
+    {
+        return $this->belongsTo(my_Parent::class,'parent_id');
+    }
+
 }

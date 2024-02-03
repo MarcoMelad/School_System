@@ -14,6 +14,7 @@ use App\Models\Teacher;
 use App\Models\Type_Blood;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class StudentRepository implements StudentRepositoryInterface{
     public function Get_Student(){
@@ -35,6 +36,8 @@ class StudentRepository implements StudentRepositoryInterface{
     }
 
     public function Update_Student($request){
+
+        DB::beginTransaction();
         try {
             $Edit_Students = Student::findOrfail($request->id);
             $Edit_Students->name =['en'=>$request->name_en,'ar'=>$request->name_ar];
@@ -51,11 +54,26 @@ class StudentRepository implements StudentRepositoryInterface{
             $Edit_Students->academic_year = $request->academic_year;
             $Edit_Students->save();
 
+            if ($request->hasfile('photos')){
+                foreach ($request->file('photos') as $file){
+                    $name = $file->getClientOriginalName();
+                    $file->storeAs('attachments/students/'.$Edit_Students->name, $file->getClientOriginalName(),'upload_attachments');
+
+                    $images = new Image();
+
+                    $images->filename = $name;
+                    $images->imageable_id = $Edit_Students->id;
+                    $images->imageable_type = 'App\Models\Student';
+                    $images->save();
+                }
+            }
+            DB::commit();
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Students.index');
 
 
         }catch (\Exception $e){
+            DB::rollBack();
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
@@ -71,6 +89,12 @@ class StudentRepository implements StudentRepositoryInterface{
         return view('Pages.Students.add',$data);
     }
 
+    public function Show_Student($id)
+    {
+        $Student = Student::findOrFail($id);
+
+        return view('pages.Students.show',compact('Student'));
+    }
     public function Get_classrooms($id)
     {
         $list_classes = Classroom::where('Grade_id',$id)->pluck('Name_Class','id');
@@ -112,9 +136,9 @@ class StudentRepository implements StudentRepositoryInterface{
 
                     $images = new Image();
 
-                    $images->filename = $name;
-                    $images->imageable_id0 = $students->id;
-                    $images->imageable_type = 'App\Models\Student';
+                    $images->filename= $name;
+                    $images->imageable_id= $students->id;
+                    $images->imageable_type= 'App\Models\Student';
                     $images->save();
                 }
             }
@@ -134,6 +158,41 @@ class StudentRepository implements StudentRepositoryInterface{
         toastr()->success(trans('messages.Delete'));
         return redirect()->route('Students.index');
 
+    }
+
+    public function Upload_attachment($request)
+    {
+        foreach($request->file('photos') as $file)
+        {
+            $name = $file->getClientOriginalName();
+            $file->storeAs('attachments/students/'.$request->student_name, $file->getClientOriginalName(),'upload_attachments');
+
+            // insert in image_table
+            $images= new image();
+            $images->filename=$name;
+            $images->imageable_id = $request->student_id;
+            $images->imageable_type = 'App\Models\Student';
+            $images->save();
+        }
+        toastr()->success(trans('messages.Success'));
+        return redirect()->route('Students.show',$request->student_id);
+    }
+
+    public function Download_attachment($studentsname, $filename)
+    {
+        return response()->download(public_path('attachments/students/'.$studentsname.'/'.$filename));
+    }
+
+    public function Delete_attachment($request){
+
+        Storage::disk('upload_attachments')
+            ->delete('attachments/students/'.$request->student_name.'/'.$request->filename);
+
+        Image::where('id',$request->id)->where('filename',$request->filename)->delete();
+
+        toastr()->success(trans('messages.Delete'));
+        //return redirect()->route('Students.show',$request->id);
+        return redirect()->back();
     }
 
 }
