@@ -38,4 +38,9 @@ class Student extends Model
     {
         return $this->belongsTo('App\Models\Section', 'section_id');
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class,'imageable');
+    }
 }

@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Image;
 use App\Models\my_Parent;
 use App\Models\Nationalitie;
 use App\Models\ParentAttachment;
 use App\Models\Religion;
 use App\Models\Type_Blood;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -111,6 +113,7 @@ class AddParent extends Component
 
     public function submitForm(){
 
+        DB::beginTransaction();
         try {
             $My_Parent = new my_Parent();
             // Father_INPUTS
@@ -142,21 +145,26 @@ class AddParent extends Component
             $My_Parent->save();
 
             if (!empty($this->photos)){
-
                 foreach ($this->photos as $photo){
-                    $photo->storeAs($this->National_ID_Father,$photo->getClientOriginalName(),$disk='parent_attachments');
-                    ParentAttachment::create([
-                        'file_name'=> $photo->getClientOriginalName(),
-                        'parent_id'=> my_Parent::latest()->first()->id,
-                    ]);
+                    $name = $photo->getClientOriginalName();
+                    $photo->storeAs('attachments/parents/'.$My_Parent->Name_Father, $photo->getClientOriginalName(),'upload_attachments');
+
+                    $images = new Image();
+
+                    $images->filename = $name;
+                    $images->imageable_id = $My_Parent->id;
+                    $images->imageable_type = 'App\Models\my_Parent';
+                    $images->save();
                 }
             }
+            DB::commit();
             $this->successMessage = trans('messages.Success');
             $this->clearForm();
             $this->currentStep = 1;
         }
 
         catch (\Exception $e) {
+            DB::rollBack();
             $this->catchError = $e->getMessage();
         };
 
@@ -215,40 +223,36 @@ class AddParent extends Component
 
     public function submitForm_edit(){
 
-        if ($this->Parent_id){
-            $parent = my_Parent::find($this->Parent_id);
-            $parent->update([
-                'Passport_ID_Father' => $this->Passport_ID_Father,
-                'National_ID_Father' => $this->National_ID_Father,
-                'Email' => $this->Email,
-                'Password' => $this->Password,
-                'Phone_Father' => $this->Phone_Father,
-                'Nationality_Father_id' => $this->Nationality_Father_id,
-                'Blood_Type_Father_id' => $this->Blood_Type_Father_id,
-                'Address_Father' => $this->Address_Father,
-                'Religion_Father_id' => $this->Religion_Father_id,
+        DB::beginTransaction();
+        try {
+            if ($this->Parent_id) {
+                $parent = My_Parent::find($this->Parent_id);
+                $parent->Passport_ID_Father = $this->Passport_ID_Father;
+                $parent->National_ID_Father = $this->National_ID_Father;
 
-                'National_ID_Mother' =>$this->National_ID_Mother,
-                'Passport_ID_Mother' => $this->Passport_ID_Mother,
-                'Phone_Mother' => $this->Phone_Mother,
-                'Nationality_Mother_id' => $this->Nationality_Mother_id,
-                'Blood_Type_Mother_id' => $this->Blood_Type_Mother_id,
-                'Address_Mother' =>$this->Address_Mother,
-                'Religion_Mother_id' =>$this->Religion_Mother_id,
-//                'Name_Mother' => $this->getTranslation('Name_Mother', 'ar'),
-//                'Name_Mother_en' => $this->getTranslation('Name_Father', 'en'),
-//                'Job_Mother' => $this->getTranslation('Job_Mother', 'ar'),
-//               'Job_Mother_en' => $this->getTranslation('Job_Mother', 'en'),
-//                'Name_Father' => $this->getTranslation('Name_Father', 'ar'),
-//                'Name_Father_en' => $this->getTranslation('Name_Father', 'en'),
-//                'Job_Father' => $this->getTranslation('Job_Father', 'ar'),
-//                'Job_Father_en' => $this->getTranslation('Job_Father', 'en'),
+                if (!empty($this->photos)) {
+                    foreach ($this->photos as $photo) {
+                        $name = $photo->getClientOriginalName();
+                        $photo->storeAs('attachments/parents/' . $parent->Name_Father, $photo->getClientOriginalName(), 'upload_attachments');
 
-            ]);
+                        $images = new Image();
 
+                        $images->filename = $name;
+                        $images->imageable_id = $parent->id;
+                        $images->imageable_type = 'App\Models\my_Parent';
+                        $images->save();
+                    }
+                }
+                DB::commit();
+                $this->successMessage = trans('messages.Update');
+                return redirect()->to('/add_parent');
+            }
+        }catch (\Exception $e){
+            DB::rollBack();
+            $this->catchError = $e->getMessage();
         }
 
-        return redirect()->to('/add_parent');
+
     }
     //clearForm
     public function clearForm()

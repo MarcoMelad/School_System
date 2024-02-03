@@ -4,6 +4,7 @@ namespace App\Repository;
 use App\Models\Classroom;
 use App\Models\Gender;
 use App\Models\Grade;
+use App\Models\Image;
 use App\Models\my_Parent;
 use App\Models\Nationalitie;
 use App\Models\Section;
@@ -11,6 +12,7 @@ use App\Models\Specialization;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Type_Blood;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class StudentRepository implements StudentRepositoryInterface{
@@ -84,6 +86,8 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Store_Student($request){
 
+        DB::beginTransaction();
+
         try {
             $students = new Student();
             $students->name =['en'=>$request->name_en,'ar'=>$request->name_ar];
@@ -100,21 +104,32 @@ class StudentRepository implements StudentRepositoryInterface{
             $students->academic_year = $request->academic_year;
             $students->save();
 
+
+            if ($request->hasfile('photos')){
+                foreach ($request->file('photos') as $file){
+                    $name = $file->getClientOriginalName();
+                    $file->storeAs('attachments/students/'.$students->name, $file->getClientOriginalName(),'upload_attachments');
+
+                    $images = new Image();
+
+                    $images->filename = $name;
+                    $images->imageable_id0 = $students->id;
+                    $images->imageable_type = 'App\Models\Student';
+                    $images->save();
+                }
+            }
+            DB::commit();
             toastr()->success(trans('messages.Success'));
             return redirect()->route('Students.create');
 
 
         }catch (\Exception $e){
+            DB::rollback();
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
 
     public function Delete_Student($request){
-
-//        Student::findOrFail($request->id)->delete();
-//        toastr()->success(trans('messages.Delete'));
-//        return redirect()->route('Students.index');
-
         Student::destroy($request->id);
         toastr()->success(trans('messages.Delete'));
         return redirect()->route('Students.index');
