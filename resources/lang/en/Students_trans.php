@@ -31,5 +31,23 @@ return [
     'created_at' => 'created_at',
     'Download' => 'Download',
     'delete' => 'Delete',
+    'Student_Edit'=> 'Student Edit',
+    'old_grade' => 'Previous Students Grade',
+    'new_grade' => 'New Students Grade',
+    'no_students' => 'There Is No Data in This Student Table',
+    'confirmation'=> 'Confirm',
+    'mange_promotion' => 'Mange Promotion',
+    'old_class' => 'Previous Classroom',
+    'new_class' => 'New Classroom',
+    'old_year' => 'Previous year',
+    'new_year' => 'New Year',
+    'old_section' => 'Previous Section',
+    'new_section' => 'New Section',
+    'cancel_promotion' => 'Cancel Promotion',
+    'student_graduate' => 'Student Graduate',
+    'delete_student' => 'Delete Student',
+    'student_recovery' => 'Student Recovery',
+    'cancel_graduate' => 'Are You Sure To Cancel Graduation ?'
+
 
 ];

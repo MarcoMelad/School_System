@@ -32,11 +32,6 @@ class CreateForeignKeys extends Migration {
             $table->foreign('Religion_Mother_id')->references('id')->on('religions');
         });
 
-        Schema::table('parent_attachments', function(Blueprint $table) {
-            $table->foreign('parent_id')->references('id')->on('my__parents')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-        });
 	}
 
 	public function down()

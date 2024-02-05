@@ -31,6 +31,23 @@ return [
     'created_at' => 'تاريخ الاضافة',
     'Download' => 'تحميل',
     'delete' => 'حذف',
+    'Student_Edit'=>'تعديل الطالب',
+    'old_grade' => 'المرحلة الدراسية السابقة',
+    'new_grade' => 'المرحلة الدراسية الجديدة',
+    'old_class' => 'الصف الدراسي السابق',
+    'new_class' => 'الصف الدراسي الجديد',
+    'old_year' => 'السنة الدراسية',
+    'new_year' => 'السنة الدراسية الحالية',
+    'old_section' => 'القسم الدراسي السابق',
+    'new_section' => 'القسم الدراسي الجديد',
+    'no_students' => 'لاتوجد بيانات في جدول الطلاب',
+    'confirmation'=> 'تأكيد',
+    'mange_promotion' => 'ادارة ترقية الطلاب',
+    'cancel_promotion' => 'ارجاع الطالب',
+    'student_graduate' => 'تخرج الطالب',
+    'delete_student' => 'حذف الطالب',
+    'student_recovery' => 'ارجاع الطالب',
+    'cancel_graduate' => 'هل انت متاكد من الغاء عملية التخرج ؟',
 
 
 ];
