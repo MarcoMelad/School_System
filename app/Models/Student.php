@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Students\ProcessingFeeController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
@@ -52,6 +53,10 @@ class Student extends Model
     public function myparent()
     {
         return $this->belongsTo(my_Parent::class,'parent_id');
+    }
+    public function student_account()
+    {
+        return $this->hasMany(StudentAccount::class, 'student_id');
     }
 
 }

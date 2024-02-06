@@ -75,7 +75,7 @@
                                 <ul id="Student_information" class="collapse">
                                     <li><a href="{{route('Students.create')}}">{{trans('main_trans.add_student')}}</a>
                                     </li>
-                                    <li><a href="{{route('Students.index')}}">{{trans('main_trans.list_students')}}</a>
+                                    <li><a href="{{route('Students.index')}}">{{trans('main_trans.list_student')}}</a>
                                     </li>
                                 </ul>
                             </li>
@@ -148,8 +148,10 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="calendar.html">Events Calendar </a></li>
-                            <li><a href="calendar-list.html">List Calendar</a></li>
+                            <li><a href="{{route('Fees.index')}}">{{trans('Students_trans.study_fee')}}</a></li>
+                            <li><a href="{{route('Fees_Invoices.index')}}">{{trans('main_trans.fee')}}</a></li>
+                            <li> <a href="{{route('ProcessingFee.index')}}">استبعاد رسوم</a> </li>
+                            <li> <a href="{{route('Payment_students.index')}}">سندت الصرف</a> </li>
                         </ul>
                     </li>
 

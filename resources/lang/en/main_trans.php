@@ -15,7 +15,7 @@ return [
     'students'=>'Students',
     'Student_information'=>'Students Information',
     'add_student'=>'Add student',
-    'list_students'=>'list Students',
+    'list_student'=>'List Students',
     'Students_Promotions'=>'Students Promotions',
     'add_Promotion'=>'Add Promotion',
     'list_Promotions'=>'Promotion List',
@@ -38,7 +38,8 @@ return [
     'Users'=>'Users',
     'sections'=>'Sections',
     'List_sections'=>'List Sections',
+    'fee'=> 'Fees',
 
     'Copyright' => 'Copyright',
-    'Name_Programer' => 'Marco Milad All Rights Reserved'
+    'Name_Programer' => 'Marco Milad All Rights Reserved',
 ];
