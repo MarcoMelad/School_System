@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-interface ExamRepositoryInterface
+interface QuizzRepositoryInterface
 {
     public function index();
 
@@ -15,4 +15,5 @@ interface ExamRepositoryInterface
     public function update($request);
 
     public function destroy($request);
+
 }
