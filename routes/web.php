@@ -76,6 +76,9 @@ Route::group(
     Route::group(['namespace' => 'Subjects'], function () {
         Route::resource('subjects', 'SubjectController');
     });
+    Route::group(['namespace' => 'Exams'], function () {
+        Route::resource('Exams', 'ExamController');
+    });
 });
 
 
