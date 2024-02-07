@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Repository\ProcessingFeeRepositoryInterface;
+use App\Repository\SubjectRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepoServiceProvider extends ServiceProvider
@@ -53,6 +54,10 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Repository\AttendanceRepositoryInterface',
             'App\Repository\AttendanceRepository'
+        );
+        $this->app->bind(
+            'App\Repository\SubjectRepositoryInterface',
+            'App\Repository\SubjectRepository'
         );
     }
 
