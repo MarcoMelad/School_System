@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\LibraryRepository;
+use App\Repository\LibraryRepositoryInterface;
 use App\Repository\ProcessingFeeRepositoryInterface;
 use App\Repository\QuestionRepositoryInterface;
 use App\Repository\SubjectRepositoryInterface;
@@ -67,6 +69,10 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Repository\QuestionRepositoryInterface',
             'App\Repository\QuestionRepository'
+        );
+        $this->app->bind(
+            'App\Repository\LibraryRepositoryInterface',
+            'App\Repository\LibraryRepository'
         );
     }
 
