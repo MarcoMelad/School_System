@@ -86,6 +86,11 @@ Route::group(
     Route::group(['namespace' => 'questions'], function () {
         Route::resource('questions', 'QuestionController');
     });
+
+    Route::group(['namespace' => 'settings'], function () {
+        Route::resource('settings', 'SettingController');
+    });
+
 });
 
 

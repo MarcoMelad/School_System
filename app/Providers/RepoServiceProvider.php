@@ -6,6 +6,7 @@ use App\Repository\LibraryRepository;
 use App\Repository\LibraryRepositoryInterface;
 use App\Repository\ProcessingFeeRepositoryInterface;
 use App\Repository\QuestionRepositoryInterface;
+use App\Repository\SettingRepositoryInterface;
 use App\Repository\SubjectRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
@@ -73,6 +74,10 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Repository\LibraryRepositoryInterface',
             'App\Repository\LibraryRepository'
+        );
+        $this->app->bind(
+            'App\Repository\SettingRepositoryInterface',
+            'App\Repository\SettingRepository'
         );
     }
 
