@@ -2,6 +2,7 @@
 
 return [
 
+    'Student_Dashboard'=> 'Student Dashboard',
     'personal_information' => 'Personal Information',
     'name' => 'Name',
     'name_ar' => 'Name_ar',

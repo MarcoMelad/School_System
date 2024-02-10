@@ -2,6 +2,7 @@
 
 return [
 
+    'Student_Dashboard' => 'لوحة تحكم الطالب',
     'personal_information' => 'المعلومات الشخصية',
     'name' => 'اسم الطالب',
     'name_ar' => 'الاسم باللغة العربية',

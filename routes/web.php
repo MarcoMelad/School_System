@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
+Route::get('/', 'HomeController@index')->name('selection');
 
-Route::group(['middleware' => 'guest'], function () {
-    Route::get('/', function () {
-        return View::make('auth.login');
-    });
+
+Route::group(['namespace' => 'Auth'], function () {
+
+    Route::get('/login/{type}', 'LoginController@loginForm')->middleware('guest')->name('login.show');
+
+    Route::post('/login', 'LoginController@login')->name('login');
+
+    Route::get('/logout/{type}', 'LoginController@logout')->name('logout');
 });
 
 Route::group(
@@ -33,7 +38,7 @@ Route::group(
                 return View::make('dashboard');
             });*/
 
-    Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
     Route::group(['namespace' => 'Grades'], function () {
         Route::resource('Grades', 'GradeController');
