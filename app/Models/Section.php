@@ -20,12 +20,16 @@ class Section extends Model
 
     public function My_Class()
     {
-        return $this->belongsTo('App\Models\Classroom','Class_id');
+        return $this->belongsTo(Classroom::class,'Class_id');
     }
     public function teachers()
     {
-        return $this->belongsToMany('App\Models\Teacher','teacher_section');
+        return $this->belongsToMany(Teacher::class,'teacher_section');
     }
 
+    public function Grades()
+    {
+        return $this->belongsTo(Grade::class,'Grade_id');
+    }
 
 }
