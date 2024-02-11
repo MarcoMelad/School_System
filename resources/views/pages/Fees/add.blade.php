@@ -69,6 +69,7 @@
 
                                 </select>
                             </div>
+
                             <div class="form-group col">
                                 <label for="inputZip">{{trans('Students_trans.academic_year')}}</label>
                                 <select class="custom-select mr-sm-2" name="year">
