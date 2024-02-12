@@ -36,7 +36,12 @@ Route::group(
         Route::get('student','StudentController@index')->name('student.index');
         Route::get('sections','StudentController@sections')->name('sections');
         Route::post('attendance','StudentController@attendance')->name('attendance');
-        Route::post('edit_attendance','StudentController@editAttendance')->name('attendance.edit');
+        Route::get('attendance_report','StudentController@attendanceReport')->name('attendance.report');
+        Route::post('attendance_search','StudentController@attendanceSearch')->name('attendance.search');
+        Route::resource('quizzes','QuizzController');
+        Route::get('/Get_classrooms/{id}', 'QuizzController@getClassrooms');
+        Route::get('/Get_Sections/{id}', 'QuizzController@Get_Sections');
+        Route::resource('question','QuestionController');
 
     });
 
