@@ -54,10 +54,4 @@ class QuizzController extends Controller
         return $this->TeacherQiiz->destroy($request);
     }
 
-    public function Get_Sections($id){
-        return $this->TeacherQiiz->Get_Sections($id);
-    }
-    public function getClassrooms($id){
-        return $this->TeacherQiiz->getClassrooms($id);
-    }
 }

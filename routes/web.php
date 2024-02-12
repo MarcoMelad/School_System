@@ -9,7 +9,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| routes are loaded by the RouteService Provider within a group which
 | contains the "web" middleware group. Now create something great!
 |
 */
@@ -73,10 +73,10 @@ Route::group(
         Route::resource('Payment_students', 'PaymentController');
         Route::resource('Attendance', 'AttendanceController');
         Route::resource('online_classes', 'OnlineClasseController');
+        Route::get('/indirect', 'OnlineClasseController@indirectCreate')->name('indirect.create');
+        Route::post('/indirect', 'OnlineClasseController@storeIndirect')->name('indirect.store');
         Route::resource('library', 'LibraryController');
         Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
-        Route::get('/Get_classrooms/{id}', 'StudentController@Get_classrooms');
-        Route::get('/Get_Sections/{id}', 'StudentController@Get_Sections');
         Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');
         Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');
         Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');

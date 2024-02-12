@@ -8,9 +8,6 @@ interface TeacherQuizzRepositoryInterface
     public function show($id);
     public function index();
     public function crate();
-    public function getClassrooms($id);
-    public function Get_Sections($id);
-
     public function store($request);
 
 
