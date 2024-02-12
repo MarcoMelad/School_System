@@ -30,12 +30,6 @@ class StudentController extends Controller
        return $this->Student->Create_Student();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreStudentsRequest $request)
     {
         return $this->Student->Store_Student($request);
@@ -54,16 +48,6 @@ class StudentController extends Controller
     public function destroy(Request $request)
     {
         return $this->Student->Delete_Student($request);
-    }
-
-    public function Get_classrooms($id)
-    {
-        return $this->Student->Get_classrooms($id);
-    }
-
-    public function Get_Sections($id)
-    {
-        return $this->Student->Get_Sections($id);
     }
 
     public function Upload_attachment(Request $request){

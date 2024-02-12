@@ -21,8 +21,7 @@
                     <div class="col-xl-12 mb-30">
                         <div class="card card-statistics h-100">
                             <div class="card-body">
-
-                                <a class="btn btn-warning" href="{{route('indirect.create')}}">اضافة حصة اوفلاين
+                                <a class="btn btn-warning" href="{{route('indirect.teacher.create')}}">اضافة حصة اوفلاين
                                     جديدة</a><br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
@@ -62,7 +61,7 @@
                                                         <i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
-                                        @include('pages.online_classes.delete')
+                                        @include('pages.Teachers.dashboard.online_classes.delete')
                                         @endforeach
                                     </table>
                                 </div>

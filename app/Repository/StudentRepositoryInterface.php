@@ -10,8 +10,6 @@ interface StudentRepositoryInterface{
     public function Delete_Student($request);
     public function Show_Student($id);
     public function Create_Student();
-    public function Get_classrooms($id);
-    public function Get_Sections($id);
     public function Store_Student($request);
     public function Upload_attachment($request);
     public function Download_attachment($studentsname, $filename);

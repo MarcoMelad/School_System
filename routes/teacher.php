@@ -40,6 +40,9 @@ Route::group(
         Route::post('attendance_search','StudentController@attendanceSearch')->name('attendance.search');
         Route::resource('quizzes','QuizzController');
         Route::resource('question','QuestionController');
+        Route::resource('online_zoom_classes','OnlineZoomClassesController');
+        Route::get('/indirect', 'OnlineZoomClassesController@indirectCreate')->name('indirect.teacher.create');
+        Route::post('/indirect', 'OnlineZoomClassesController@storeIndirect')->name('indirect.teacher.store');
 
     });
 

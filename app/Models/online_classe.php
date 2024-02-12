@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class online_classe extends Model
 {
-    public $fillable= ['Grade_id','Classroom_id','section_id','user_id','meeting_id','topic','start_at','duration','password','start_url','join_url'];
+    public $fillable= ['Grade_id','Classroom_id','section_id','created_by','meeting_id','topic','start_at','duration','password','start_url','join_url'];
 
     public function grade()
     {

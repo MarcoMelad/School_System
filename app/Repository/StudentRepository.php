@@ -101,19 +101,6 @@ class StudentRepository implements StudentRepositoryInterface
         return view('pages.Students.show', compact('Student'));
     }
 
-    public function Get_classrooms($id)
-    {
-        $list_classes = Classroom::where('Grade_id', $id)->pluck('Name_Class', 'id');
-
-        return $list_classes;
-    }
-
-    public function Get_Sections($id)
-    {
-        $list_sections = Section::where('Class_id', $id)->pluck('Name_Section', 'id');
-        return $list_sections;
-    }
-
     public function Store_Student($request)
     {
 
