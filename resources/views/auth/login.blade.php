@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
-    <meta name="author" content="potenzaglobalsolutions.com" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="HTML5 Template"/>
+    <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template"/>
+    <meta name="author" content="potenzaglobalsolutions.com"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <title>برنامج مورا سوفت لادارة المدارس</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="images/favicon.ico"/>
 
     <!-- Font -->
     <link rel="stylesheet"
@@ -49,7 +49,7 @@ login-->
                         <p class="mb-20 text-white">Create tailor-cut websites with the exclusive multi-purpose
                             responsive template along with powerful features.</p>
                         <ul class="list-unstyled  pos-bot pb-30">
-                            <li class="list-inline-item"><a class="text-white" href="#"> Terms of Use</a> </li>
+                            <li class="list-inline-item"><a class="text-white" href="#"> Terms of Use</a></li>
                             <li class="list-inline-item"><a class="text-white" href="#"> Privacy Policy</a></li>
                         </ul>
                     </div>
@@ -65,6 +65,13 @@ login-->
                         @else
                             <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول ادمن</h3>
                         @endif
+                        @if (\Session::has('message'))
+                            <div class="alert alert-danger">
+                                <li>{!! \Session::get('message') !!}</li>
+                            </div>
+                        @endif
+
+
                         <form method="POST" action="{{route('login')}}">
                             @csrf
 
@@ -97,7 +104,7 @@ login-->
                             </div>
                             <div class="section-field">
                                 <div class="remember-checkbox mb-30">
-                                    <input type="checkbox" class="form-control" name="two" id="two" />
+                                    <input type="checkbox" class="form-control" name="two" id="two"/>
                                     <label for="two"> تذكرني</label>
                                     <a href="#" class="float-right">هل نسيت كلمةالمرور ؟</a>
                                 </div>
