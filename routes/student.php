@@ -28,6 +28,7 @@ Route::group(
 
     Route::group(['namespace' => 'Students\dashboard'], function () {
         Route::resource('student_exams', 'ExamsController');
+        Route::resource('student_profile', 'ProfileController');
     });
 
 });

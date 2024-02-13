@@ -16,7 +16,7 @@
     @livewireStyles
 </head>
 
-<body style="font-family: 'Cairo', sans-serif">
+<body style="font-family: 'Cairo', sans-serif" class="col-sm-10">
 
 <div class="wrapper" style="font-family: 'Cairo', sans-serif">
 
@@ -292,8 +292,7 @@ footer -->
         @include('layouts.footer')
     </div><!-- main content wrapper end-->
 </div>
-</div>
-</div>
+
 
 <!--=================================
 footer -->

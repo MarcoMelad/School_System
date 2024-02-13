@@ -15,7 +15,7 @@
     @section('content')
         <!-- row -->
         <div class="row">
-            <div class="col-md-8 mb-30">
+            <div class="col-md-12 mb-30">
                 <div class="card card-statistics h-100">
                     <div class="card-body">
 
@@ -29,7 +29,7 @@
                             </div>
                         @endif
 
-                        <form method="post" action="{{route('attendance.search')}}" autocomplete="off">
+                        <form method="post"  action="{{ route('sons.attendance.search') }}" autocomplete="off">
                             @csrf
                             <h6 style="font-family: 'Cairo', sans-serif;color: blue">معلومات البحث</h6><br>
                             <div class="row">
@@ -47,22 +47,18 @@
 
                                 <div class="card-body datepicker-form">
                                     <div class="input-group" data-date-format="yyyy-mm-dd">
-                                        <input type="text" class="form-control range-from date-picker-default"
-                                               placeholder="تاريخ البداية" required name="from">
+                                        <input type="text"  class="form-control range-from date-picker-default" placeholder="تاريخ البداية" required name="from">
                                         <span class="input-group-addon">الي تاريخ</span>
-                                        <input class="form-control range-to date-picker-default"
-                                               placeholder="تاريخ النهاية" type="text" required name="to">
+                                        <input class="form-control range-to date-picker-default" placeholder="تاريخ النهاية" type="text" required name="to">
                                     </div>
                                 </div>
 
                             </div>
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right"
-                                    type="submit">{{trans('Students_trans.submit')}}</button>
+                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Students_trans.submit')}}</button>
                         </form>
                         @isset($Students)
                             <div class="table-responsive">
-                                <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
-                                       data-page-length="50"
+                                <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
                                        style="text-align: center">
                                     <thead>
                                     <tr>

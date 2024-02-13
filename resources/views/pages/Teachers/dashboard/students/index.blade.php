@@ -34,7 +34,7 @@
     @endif
 
     <h5 style="font-family: 'Cairo', sans-serif;color: red"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
-    <form method="post" action="{{ route('attendance') }}" autocomplete="off" >
+    <form method="post" action="{{ route('attendance') }}" autocomplete="off" class="col-sm-10">
 
         @csrf
         <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"

@@ -53,5 +53,10 @@ class QuizzController extends Controller
     {
         return $this->TeacherQiiz->destroy($request);
     }
-
+    public function student_quizze($quizze_id){
+        return $this->TeacherQiiz->student_quizze($quizze_id);
+    }
+    public function repeat_quizze(Request $request){
+        return $this->TeacherQiiz->repeat_quizze($request);
+    }
 }
