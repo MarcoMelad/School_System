@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
     @section('title')
-        سند صرف
+        {{trans('Students_trans.fee_receipt')}}
     @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     @section('PageTitle')
-        سند صرف {{$student->name}}
+        {{trans('Students_trans.fee_receipt')}} : {{$student->name}}
     @stop
     <!-- breadcrumb -->
 @endsection
@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>المبلغ : <span class="text-danger">*</span></label>
+                                    <label>{{trans('Students_trans.amount')}} : <span class="text-danger">*</span></label>
                                     <input class="form-control" name="Debit" type="number">
                                     <input type="hidden" name="student_id" value="{{$student->id}}"
                                            class="form-control">
@@ -43,7 +43,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>رصيد الطالب : </label>
+                                    <label>{{trans('Students_trans.account')}} : </label>
                                     <input class="form-control" name="final_balance"
                                            value="{{ number_format($student->student_account->sum('Debit') - $student->student_account->sum('credit'), 2) }}"
                                            type="text" readonly>
@@ -54,7 +54,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>البيان : <span class="text-danger">*</span></label>
+                                    <label>{{trans('Students_trans.statement')}} : <span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
                                               rows="3"></textarea>
                                 </div>

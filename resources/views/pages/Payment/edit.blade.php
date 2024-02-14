@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-  تعديل سند صرف
+    {{trans('Students_trans.edit_fee_receipt')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-تعديل سند صرف : <label style="color: red">{{$payment_student->student->name}}</label>
+    {{trans('Students_trans.edit_fee_receipt')}} : <label style="color: red">{{$payment_student->student->name}}</label>
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -36,7 +36,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>المبلغ : <span class="text-danger">*</span></label>
+                                        <label>{{trans('Students_trans.amount')}} : <span class="text-danger">*</span></label>
                                         <input  class="form-control" name="Debit" value="{{$payment_student->amount}}" type="number" >
                                         <input  type="hidden" name="student_id" value="{{$payment_student->student->id}}" class="form-control">
                                         <input  type="hidden" name="id"  value="{{$payment_student->id}}" class="form-control">
@@ -47,7 +47,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>البيان : <span class="text-danger">*</span></label>
+                                        <label>{{trans('Students_trans.statement')}} : <span class="text-danger">*</span></label>
                                         <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">{{$payment_student->description}}</textarea>
                                     </div>
                                 </div>

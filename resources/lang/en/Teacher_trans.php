@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Name_Teacher'=>'Name Teacher',
+    'Name_Teacher'=>'Teacher Name',
     'Add_Teacher'=>'Add Teacher',
     'Edit_Teacher'=>'Edit Teacher',
     'Delete_Teacher'=>'Delete Teacher',

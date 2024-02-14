@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
     @section('title')
-        قائمة المواد الدراسية
+        {{trans('Students_trans.subjects_list')}}
     @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     @section('PageTitle')
-        قائمة المواد الدراسية
+        {{trans('Students_trans.subjects_list')}}
     @stop
     <!-- breadcrumb -->
 @endsection
@@ -22,7 +22,7 @@
                         <div class="card card-statistics h-100">
                             <div class="card-body">
                                 <a href="{{route('subjects.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">اضافة مادة جديدة</a><br><br>
+                                   aria-pressed="true">{{trans('Students_trans.add_subject')}}</a><br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -30,11 +30,11 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>اسم المادة</th>
-                                            <th>المرحلة الدراسية</th>
-                                            <th>الصف الدراسي</th>
-                                            <th>اسم المعلم</th>
-                                            <th>العمليات</th>
+                                            <th>{{trans('Students_trans.subject_name')}}</th>
+                                            <th>{{trans('Students_trans.grade')}}</th>
+                                            <th>{{trans('Students_trans.class')}} </th>
+                                            <th>{{trans('Teacher_trans.Name_Teacher')}} </th>
+                                            <th>{{trans('Students_trans.Processes')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -51,7 +51,7 @@
                                                             class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                             data-toggle="modal"
-                                                            data-target="#delete_subject{{ $subject->id }}" title="حذف">
+                                                            data-target="#delete_subject{{ $subject->id }}" title="{{trans('Students_trans.delete')}}">
                                                         <i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
@@ -65,8 +65,8 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 style="font-family: 'Cairo', sans-serif;"
-                                                                    class="modal-title" id="exampleModalLabel">حذف مادة
-                                                                    دراسية</h5>
+                                                                    class="modal-title" id="exampleModalLabel">
+                                                                    {{trans('Students_trans.delete_subject')}}</h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>

@@ -270,7 +270,7 @@
                                                                                             {{ method_field('Delete') }}
                                                                                             @csrf
                                                                                             {{ trans('Sections_trans.Warning_Section') }}
-                                                                                            <input id="id" type="hidden"
+                                                                                                <input id="id" type="hidden"
                                                                                                    name="id"
                                                                                                    class="form-control"
                                                                                                    value="{{ $list_Sections->id }}">

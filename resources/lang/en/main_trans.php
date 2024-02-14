@@ -15,7 +15,7 @@ return [
     'students'=>'Students',
     'Student_information'=>'Students Information',
     'add_student'=>'Add student',
-    'list_student'=>'List Students',
+    'list_students'=>'List Students',
     'Students_Promotions'=>'Students Promotions',
     'add_Promotion'=>'Add Promotion',
     'list_Promotions'=>'Promotion List',

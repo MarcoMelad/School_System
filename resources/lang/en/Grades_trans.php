@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title_page' => 'Page title',
+    'title_page' => 'Grades',
     'List_Grade' => 'List Grade',
     'add_Grade' => 'add Grade',
     'edit_Grade' => 'edit Grade',

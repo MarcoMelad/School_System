@@ -14,11 +14,6 @@ use Illuminate\Http\Request;
 class SectionController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     *
-     */
     public function index()
     {
         $Grades = Grade::with(['Sections'])->get();
@@ -28,21 +23,7 @@ class SectionController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
 
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
     public function store(StoreSections $request)
     {
         try{
@@ -67,34 +48,6 @@ class SectionController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
     public function update(StoreSections $request)
     {
         try{
@@ -125,16 +78,9 @@ class SectionController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
     public function destroy(Request $request)
     {
-        $Sections = Section::findOrFail($request->id);
-        $Sections->delete();
+        $Sections = Section::findOrFail($request->id)->delete();
         toastr()->success(trans('messages.Delete'));
         return redirect()->route('Sections.index');
 

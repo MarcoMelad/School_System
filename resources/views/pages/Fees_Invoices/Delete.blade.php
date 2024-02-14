@@ -13,10 +13,10 @@
                     @csrf
                     @method('DELETE')
                     <input type="hidden" name="id" value="{{$Fee_invoice->id}}">
-                    <h5 style="font-family: 'Cairo', sans-serif;">{{trans('Students_trans.delete')}}</h5>
+                    <h5 style="font-family: 'Cairo', sans-serif;">{{trans('Students_trans.pro_delete')}}</h5>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('Students_trans.Close')}}</button>
-                        <button  class="btn btn-danger">{{trans('Students_trans.submit')}}</button>
+                        <button  class="btn btn-danger">{{trans('Students_trans.delete')}}</button>
                     </div>
                 </form>
             </div>

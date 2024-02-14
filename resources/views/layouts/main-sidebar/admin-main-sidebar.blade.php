@@ -136,11 +136,11 @@
                 <div class="clearfix"></div>
             </a>
             <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
-                <li><a href="{{route('Fees.index')}}">الرسوم الدراسية</a></li>
-                <li><a href="{{route('Fees_Invoices.index')}}">الفواتير</a></li>
-                <li><a href="{{route('receipt_students.index')}}">سندات القبض</a></li>
-                <li><a href="{{route('ProcessingFee.index')}}">استبعاد رسوم</a></li>
-                <li><a href="{{route('Payment_students.index')}}">سندت الصرف</a></li>
+                <li><a href="{{route('Fees.index')}}">{{trans('Students_trans.study_fee')}}</a></li>
+                <li><a href="{{route('Fees_Invoices.index')}}">{{trans('Students_trans.invoices')}}</a></li>
+                <li><a href="{{route('receipt_students.index')}}">{{trans('Students_trans.fees_payment')}}</a></li>
+                <li><a href="{{route('ProcessingFee.index')}}">{{trans('Students_trans.fee_refund')}}</a></li>
+                <li><a href="{{route('Payment_students.index')}}">{{trans('Students_trans.fees_receipt')}}</a></li>
             </ul>
         </li>
 
@@ -161,12 +161,12 @@
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#Subjects">
                 <div class="pull-left"><i class="fas fa-book-open"></i><span
-                        class="right-nav-text">المواد الدراسية</span></div>
+                        class="right-nav-text">{{trans('Students_trans.subjects')}}</span></div>
                 <div class="pull-right"><i class="ti-plus"></i></div>
                 <div class="clearfix"></div>
             </a>
             <ul id="Subjects" class="collapse" data-parent="#sidebarnav">
-                <li><a href="{{route('subjects.index')}}">قائمة المواد</a></li>
+                <li><a href="{{route('subjects.index')}}">{{trans('Students_trans.subjects_list')}}</a></li>
             </ul>
         </li>
 

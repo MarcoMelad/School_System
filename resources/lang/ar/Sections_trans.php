@@ -28,5 +28,5 @@ return [
     'Edit'=>'تعديل',
     'Delete'=>'حذف',
     'Close' => 'اغلاق',
-
+    'Name_Teacher'=> 'المعلم',
 ];
